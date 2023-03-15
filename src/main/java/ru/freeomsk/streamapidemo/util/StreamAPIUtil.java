@@ -13,12 +13,12 @@ public class StreamAPIUtil {
     // Получение начального списка специалистов
     public static List<Specialist> getSpecialists() {
         return List.of(
-                new Specialist("Ivanov Ivan", new BigDecimal(5000), Speciality.ENGINEER),
-                new Specialist("Alexander Alexandrov", new BigDecimal(4000), Speciality.ENGINEER),
-                new Specialist("Sergej Sergeev", new BigDecimal(3000), Speciality.DEVOPS),
-                new Specialist("Fedor Fedorov", new BigDecimal(2000), Speciality.DEVOPS),
-                new Specialist("Kirill Kirillov", new BigDecimal(10000), Speciality.MANAGER),
-                new Specialist("Petr Petrov", new BigDecimal(10000), Speciality.MANAGER)
+                new Specialist("Ivanov Ivan Ivanovich", new BigDecimal(5000), Speciality.ENGINEER),
+                new Specialist("Alexandrov Alexander Alexandrovich", new BigDecimal(4000), Speciality.ENGINEER),
+                new Specialist("Sergeev Sergej Sergeevich", new BigDecimal(3000), Speciality.DEVOPS),
+                new Specialist("Fedorov Fedor Fedorovich", new BigDecimal(2000), Speciality.DEVOPS),
+                new Specialist("Kirillov Kirill Kirillovich", new BigDecimal(10000), Speciality.MANAGER),
+                new Specialist("Petrov Petr Petrovich", new BigDecimal(10000), Speciality.MANAGER)
         );
     }
 
@@ -35,14 +35,14 @@ public class StreamAPIUtil {
             .collect(Collectors.toList());
     }
 
-    // Сортировка по имени по возрастанию
+    // Сортировка по ФИО по возрастанию
     public static List<Specialist> sortSpecialistsByNameAsc(List<Specialist> specialists) {
         return specialists.stream()
                 .sorted(Comparator.comparing(Specialist::getName))
                 .collect(Collectors.toList());
     }
 
-    // Сортировка по имени по убыванию
+    // Сортировка по ФИО по убыванию
     public static List<Specialist> sortSpecialistsByNameDesc(List<Specialist> specialists) {
         return specialists.stream()
                 .sorted(Comparator.comparing(Specialist::getName).reversed())
@@ -66,13 +66,13 @@ public class StreamAPIUtil {
                 .collect(Collectors.groupingBy(Specialist::getSpeciality));
     }
 
-    // Проверка - все ли инженеры?
+    // Проверка - все ли инженеры
     public static boolean matchAllEngineers(List<Specialist> specialists) {
         return specialists.stream()
                 .allMatch(specialist -> specialist.getSpeciality().equals(Speciality.ENGINEER));
     }
 
-    // Проверка - есть ли инженеры?
+    // Проверка - есть ли инженеры
     public static boolean matchAnyEngineers(List<Specialist> specialists) {
         return specialists.stream()
                 .anyMatch(specialist -> specialist.getSpeciality().equals(Speciality.ENGINEER));
@@ -84,7 +84,7 @@ public class StreamAPIUtil {
                 .allMatch(specialist -> specialist.getSalary().compareTo(salary) > 0);
     }
 
-    // Проверка - никто не имеет зарплату выше указанной?
+    // Проверка - никто не имеет зарплату выше указанной
     public static boolean matchNoneSalaryMoreThen(List<Specialist> specialists, BigDecimal salary) {
         return specialists.stream()
                 .noneMatch(specialist -> specialist.getSalary().compareTo(salary) > 0);
