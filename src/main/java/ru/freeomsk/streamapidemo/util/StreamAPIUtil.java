@@ -1,4 +1,4 @@
-package ru.freeomsk.streamapidemo;
+package ru.freeomsk.streamapidemo.util;
 
 import ru.freeomsk.streamapidemo.model.Specialist;
 import ru.freeomsk.streamapidemo.model.Speciality;
